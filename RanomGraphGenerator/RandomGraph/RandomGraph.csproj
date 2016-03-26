@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Edge.cs" />
-    <Compile Include="ErodsRenyiModel.cs" />
+    <Compile Include="ErdosRenyiModel.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FullEdge.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vertex.cs" />
   </ItemGroup>

@@ -3,7 +3,7 @@
 namespace RandomGraph.Test
 {
     [TestClass]
-    public class ErodsRenyiModelTest
+    public class ErdosRenyiModelTest
     {
         [TestMethod]
         public void GenerateGraph_VerticesAndEdges_HasCorrectNumberOfVertices()
@@ -11,8 +11,8 @@ namespace RandomGraph.Test
             const int numberOfVertices = 5;
             const int numberOfEdges = 10;
 
-            var erodsRenyiModel = new ErodsRenyiModel(numberOfVertices, numberOfEdges);
-            var graph = erodsRenyiModel.GenerateGraph();
+            var erdosRenyiModel = new ErdosRenyiModel(numberOfVertices, numberOfEdges);
+            var graph = erdosRenyiModel.GenerateGraph();
 
             Assert.AreEqual(numberOfVertices, graph.Keys.Count);
         }
@@ -23,8 +23,8 @@ namespace RandomGraph.Test
             const int numberOfVertices = 5;
             const double edgeProbability = 0.5;
 
-            var erodsRenyiModel = new ErodsRenyiModel(numberOfVertices, edgeProbability);
-            var graph = erodsRenyiModel.GenerateGraph();
+            var erdosRenyiModel = new ErdosRenyiModel(numberOfVertices, edgeProbability);
+            var graph = erdosRenyiModel.GenerateGraph();
 
             Assert.AreEqual(numberOfVertices, graph.Keys.Count);
         }
