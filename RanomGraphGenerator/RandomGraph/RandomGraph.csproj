@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DimacsFileExport.cs" />
     <Compile Include="Edge.cs" />
     <Compile Include="ErdosRenyiModel.cs" />
+    <Compile Include="ExportGraph.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FileWriter.cs" />
     <Compile Include="FullEdge.cs" />
+    <Compile Include="IDataWriter.cs" />
+    <Compile Include="IRandomGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vertex.cs" />
   </ItemGroup>

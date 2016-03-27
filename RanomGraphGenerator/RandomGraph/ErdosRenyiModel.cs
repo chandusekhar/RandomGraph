@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace RandomGraph
 {
-    public class ErdosRenyiModel
+    public class ErdosRenyiModel : IRandomGraph
     {
         private readonly int _numberOfVertices;
         private readonly int? _numberOfEdges;
