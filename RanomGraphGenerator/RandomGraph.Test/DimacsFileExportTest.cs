@@ -19,16 +19,17 @@ namespace RandomGraph.Test
             return dummyGraph;
         }
 
-            [TestMethod]
-        public void ExportGraph_HasCorrectNumberOfRows()
+        [TestMethod]
+        public void ExportGraph_WriteDataCalled()
         {
             var writerMock = new Mock<IDataWriter>();
+                writerMock.Setup(metod => metod.WriteData(It.IsAny<string>()));
 
             var dimacsFileExport = new DimacsFileExport(writerMock.Object);
-                var dummyGraph = GetDummyGraph();
+            var dummyGraph = GetDummyGraph();
             dimacsFileExport.ExportGraph(dummyGraph);
 
-            writerMock.Verify(method => method.WriteData(It.IsAny<string>()));
+            writerMock.Verify(method => method.WriteData(It.IsAny<string>()), Times.Once);
         }
     }
 }

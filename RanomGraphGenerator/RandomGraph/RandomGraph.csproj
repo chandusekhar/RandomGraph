@@ -43,7 +43,7 @@
     <Compile Include="DimacsFileExport.cs" />
     <Compile Include="Edge.cs" />
     <Compile Include="ErdosRenyiModel.cs" />
-    <Compile Include="ExportGraph.cs" />
+    <Compile Include="IExportGraph.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FileWriter.cs" />
     <Compile Include="FullEdge.cs" />

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RandomGraph
 {
-    public class DimacsFileExport : ExportGraph
+    public class DimacsFileExport : IExportGraph
     {
         private readonly IDataWriter _dataWriter;
 

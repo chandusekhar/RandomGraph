@@ -10,12 +10,12 @@
         /// <summary>
         /// The ID of the vertex which is connected.
         /// </summary>
-        public int VertexID { get; set; }
+        public int VertexID { get; private set; }
 
         /// <summary>
         /// The weigh of the edge between vertiecs.
         /// </summary>
-        public int Weight { get; set; }
+        public int Weight { get; private set; }
 
         /// <summary>
         /// Initialize the edge as pair of connected vertex 

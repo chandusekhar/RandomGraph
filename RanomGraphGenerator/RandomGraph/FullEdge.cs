@@ -6,7 +6,7 @@
         /// The ID of the source vertex which has a connection (edge)
         /// to another vertex.
         /// </summary>
-        public int SourceVertexID { get; set; }
+        public int SourceVertexID { get; private set; }
 
         /// <summary>
         /// Initialize full edge.
