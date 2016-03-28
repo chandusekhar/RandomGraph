@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomGraph", "RandomGraph\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomGraph.Test", "RandomGraph.Test\RandomGraph.Test.csproj", "{F4A867F7-BA85-4F57-9084-299C8B5929D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomGraph.Console", "RandomGraph.Console\RandomGraph.Console.csproj", "{0B341400-F2CB-4B73-920C-2FF70068D624}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F4A867F7-BA85-4F57-9084-299C8B5929D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4A867F7-BA85-4F57-9084-299C8B5929D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4A867F7-BA85-4F57-9084-299C8B5929D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B341400-F2CB-4B73-920C-2FF70068D624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B341400-F2CB-4B73-920C-2FF70068D624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B341400-F2CB-4B73-920C-2FF70068D624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B341400-F2CB-4B73-920C-2FF70068D624}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

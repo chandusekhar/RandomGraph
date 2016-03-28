@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -18,7 +17,7 @@ namespace RandomGraph
         public void ExportGraph(Dictionary<Vertex, List<Edge>> graph)
         {
             var sb = new StringBuilder(GetComment());
-            sb.Append(GetProblemLine(graph));
+            sb.Append(Environment.NewLine + GetProblemLine(graph));
 
             // The arc descriptors.
             foreach (var vertexEdgePair in graph)
@@ -45,7 +44,7 @@ namespace RandomGraph
             // The number of arcs in the network.
             var arcs = graph.SelectMany(x => x.Value).Count();
 
-            return $"{Environment.NewLine}p edge {nodes} {arcs}";
+            return $"p edge {nodes} {arcs}";
         }
     }
 }

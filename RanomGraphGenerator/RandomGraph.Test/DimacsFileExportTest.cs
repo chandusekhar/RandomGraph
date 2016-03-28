@@ -22,7 +22,9 @@ namespace RandomGraph.Test
 
         private static readonly string ExportDimacsFile = "c Random generated graph."
                                                         + $"{Environment.NewLine}p edge 3 6"
-                                                        + $"{Environment.NewLine}a 1 1 1 2 4"                                                        + $"{Environment.NewLine}a 2 0 3 2 1"                                                        + $"{Environment.NewLine}a 1 0 1 1 3";
+                                                        + $"{Environment.NewLine}a 1 1 1 2 4"
+                                                        + $"{Environment.NewLine}a 2 0 3 2 1"
+                                                        + $"{Environment.NewLine}a 1 0 1 1 3";
 
         [TestMethod]
         public void ExportGraph_WriteData_Called()
