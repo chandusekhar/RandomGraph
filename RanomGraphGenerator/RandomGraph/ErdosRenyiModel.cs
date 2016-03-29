@@ -7,10 +7,23 @@ namespace RandomGraph
 {
     public class ErdosRenyiModel : IRandomGraph
     {
+        private readonly int? _minVertexWeight;
+        private readonly int? _maxVertexWeight;
+        private readonly int? _minEdgeWeight;
+        private readonly int? _maxEdgeWeight;
         private readonly int _numberOfVertices;
         private readonly int? _numberOfEdges;
         private readonly double? _edgeProbability;
         private readonly Random _rnd;
+
+        public ErdosRenyiModel(int numberOfVertices, double edgeProbability, int minVertexWeight, 
+                                int maxVertexWeight, int minEdgeWeight, int maxEdgeWeight) : this(numberOfVertices, edgeProbability)
+        {
+            _minVertexWeight = minVertexWeight;
+            _maxVertexWeight = maxVertexWeight;
+            _minEdgeWeight = minEdgeWeight;
+            _maxEdgeWeight = maxEdgeWeight;
+        }
 
         /// <summary>
         /// The Erdős–Rényi (or Edgar Gilbert) model for generating random grphs.
@@ -65,14 +78,31 @@ namespace RandomGraph
 
             for (int i = 0; i < _numberOfVertices; i++)
             {
-                var vertex = new Vertex(i);
                 var edges = new List<Edge>();
-                graph.Add(vertex, edges);
+                if (_minVertexWeight != null && _maxVertexWeight != null)
+                {
+                    var vertex = new Vertex(i, _rnd.Next(_minVertexWeight.Value, _maxVertexWeight.Value));
+                    graph.Add(vertex, edges);
+                }
+                else
+                {
+                    var vertex = new Vertex(i);
+                    graph.Add(vertex, edges);
+                }
+                
                 for (int j = 0; j < i; j++)
                 {
                     if (_rnd.NextDouble() < _edgeProbability)
                     {
-                        edges.Add(new Edge(j));
+                        if (_minEdgeWeight != null && _maxEdgeWeight != null)
+                        {
+                            var edge = new Edge(j, _rnd.Next(_minEdgeWeight.Value, _maxEdgeWeight.Value));
+                            edges.Add(edge);
+                        }
+                        else
+                        {
+                            edges.Add(new Edge(j));
+                        }
                     }
                 }
             }
@@ -89,11 +119,27 @@ namespace RandomGraph
 
             for (int i = 0; i < _numberOfVertices; i++)
             {
-                graph.Add(new Vertex(i), new List<Edge>());
+                if (_minVertexWeight != null && _maxVertexWeight != null)
+                {
+                    graph.Add(new Vertex(i, _rnd.Next(_minVertexWeight.Value, _maxVertexWeight.Value)), new List<Edge>());
+                }
+                else
+                {
+                    graph.Add(new Vertex(i), new List<Edge>());
+                }
+                
                 for (int j = 0; j < _numberOfVertices; j++)
                 {
-                    var possibleEdge = new FullEdge(i, j);
-                    allPossibleEdges.Add(possibleEdge);
+                    if (_minEdgeWeight != null && _maxEdgeWeight != null)
+                    {
+                        var possibleEdge = new FullEdge(i, j, _rnd.Next(_minEdgeWeight.Value, _maxEdgeWeight.Value));
+                        allPossibleEdges.Add(possibleEdge);
+                    }
+                    else
+                    {
+                        var possibleEdge = new FullEdge(i, j);
+                        allPossibleEdges.Add(possibleEdge);
+                    }
                 }
             }
 
