@@ -1,38 +1,51 @@
 ﻿using System;
+using CommandLine;
 
 namespace RandomGraph.Console
 {
     static class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             // input: 0 3 4 0 test.col
-
-            var randomGraphType = (RandomGraphType)Enum.Parse(typeof(RandomGraphType), args[0]);
-            
-            IRandomGraph randomGraph = null;
-            if (randomGraphType == RandomGraphType.ErdosRenyiEdges)
+            var result = Parser.Default.ParseArguments<Options>(args);
+            var exitCode = result.MapResult(options =>
             {
-                randomGraph = new ErdosRenyiModel(int.Parse(args[1]), int.Parse(args[2]));
-            } else if (randomGraphType == RandomGraphType.ErdosRenyiPercent)
-            {
-                randomGraph = new ErdosRenyiModel(int.Parse(args[1]), double.Parse(args[2]));
-            }
+                if (options.Verbose)
+                {
+                    System.Console.WriteLine("Filenames: {0}", 1);
+                }
+                else
+                {
+                    System.Console.WriteLine("Processing...");
 
-            if (randomGraph == null) throw new ApplicationException("The application does not support random graph model.");
+                    IRandomGraph randomGraph = null;
+                    if (options.GraphAlgortiham == RandomGraphType.ErdosRenyiEdges)
+                    {
+                        randomGraph = new ErdosRenyiModel(options.NumberOfVertices, options.NumberOfEdges);
+                    }
+                    //else if (options.GraphAlgortiham == RandomGraphType.ErdosRenyiPercent)
+                    //{
+                    //    randomGraph = new ErdosRenyiModel(int.Parse(args[1]), double.Parse(args[2]));
+                    //}
 
-            var exportFileType = (ExportFileType)Enum.Parse(typeof(ExportFileType), args[3]);
+                    if (randomGraph == null) throw new ApplicationException("The application does not support random graph model.");
 
-            IExportGraph exportFile = null;
-            var dataWriter = new FileWriter(args[4]);
-            if (exportFileType == ExportFileType.Dimacs)
-            {
-                exportFile = new DimacsFileExport(dataWriter);
-            }
-            if (exportFile == null) throw new ApplicationException("The application does not support file export type.");
+                    IExportGraph exportFile = null;
+                    var dataWriter = new FileWriter(options.ExportFileName);
+                    if (options.ExportFileType == ExportFileType.Dimacs)
+                    {
+                        exportFile = new DimacsFileExport(dataWriter);
+                    }
+                    if (exportFile == null) throw new ApplicationException("The application does not support file export type.");
 
-            var graph = randomGraph.GenerateGraph();
-            exportFile.ExportGraph(graph);
+                    var graph = randomGraph.GenerateGraph();
+                    exportFile.ExportGraph(graph);
+                }
+                return 0;
+            },
+            errors => 1);
+            return exitCode;
         }
     }
 }
