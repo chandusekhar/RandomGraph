@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="D3JSONFileExportTest.cs" />
     <Compile Include="DimacsFileExportTest.cs" />
     <Compile Include="ErdosRenyiModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

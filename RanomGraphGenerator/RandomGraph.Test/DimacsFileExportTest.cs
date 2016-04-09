@@ -27,7 +27,7 @@ namespace RandomGraph.Test
                                                         + $"{Environment.NewLine}a 1 0 1 1 3";
 
         [TestMethod]
-        public void ExportGraph_WriteData_Called()
+        public void ExportDimacsGraph_WriteData_Called()
         {
             var writerMock = new Mock<IDataWriter>();
                 writerMock.Setup(metod => metod.WriteData(It.IsAny<string>()));
@@ -40,7 +40,7 @@ namespace RandomGraph.Test
         }
 
         [TestMethod]
-        public void ExportGraph_WriteData_CorrectFormat()
+        public void ExportDimacsGraph_WriteData_CorrectFormat()
         {
             var writerMock = new Mock<IDataWriter>();
             writerMock.Setup(metod => metod.WriteData(It.IsAny<string>()));
