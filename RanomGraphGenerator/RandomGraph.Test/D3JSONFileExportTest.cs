@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace RandomGraph.Test
 {
     [TestClass]
-    public class D3JSONFileExportTest
+    public class D3JsonFileExportTest
     {
         private Dictionary<Vertex, List<Edge>> GetDummyGraph()
         {
@@ -35,9 +35,9 @@ namespace RandomGraph.Test
             var writerMock = new Mock<IDataWriter>();
             writerMock.Setup(metod => metod.WriteData(It.IsAny<string>()));
 
-            var d3JSONFileExport = new D3JSONFileExport(writerMock.Object);
+            var d3JsonFileExport = new D3JsonFileExport(writerMock.Object);
             var dummyGraph = GetDummyGraph();
-            d3JSONFileExport.ExportGraph(dummyGraph);
+            d3JsonFileExport.ExportGraph(dummyGraph);
 
             writerMock.Verify(method => method.WriteData(It.IsAny<string>()), Times.Once);
         }
@@ -48,9 +48,9 @@ namespace RandomGraph.Test
             var writerMock = new Mock<IDataWriter>();
             writerMock.Setup(metod => metod.WriteData(It.IsAny<string>()));
 
-            var d3JSONFileExport = new D3JSONFileExport(writerMock.Object);
+            var d3JsonFileExport = new D3JsonFileExport(writerMock.Object);
             var dummyGraph = GetDummyGraph();
-            d3JSONFileExport.ExportGraph(dummyGraph);
+            d3JsonFileExport.ExportGraph(dummyGraph);
 
             writerMock.Verify(method => method.WriteData(Export3DJSONFile), Times.Once);
         }

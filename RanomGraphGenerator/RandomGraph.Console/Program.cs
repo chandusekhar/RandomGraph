@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CommandLine;
 using RandomGraph.Console.Options;
 
@@ -8,18 +9,30 @@ namespace RandomGraph.Console
     {
         static int Main(string[] args)
         {
-            // input: 0 3 4 0 test.col
-            var result = Parser.Default.ParseArguments<RandomGraphOptions>(args);
-            var exitCode = result.MapResult(options =>
-            {
-                if (options.Verbose)
+            Action<Dictionary<Vertex, List<Edge>>, OptionsBase> exportAct = (graph, options) =>
                 {
-                    System.Console.WriteLine("Filenames: {0}", 1);
-                }
-                else
-                {
-                    System.Console.WriteLine("Processing...");
+                    IExportGraph exportFile = null;
+                    var dataWriter = new FileWriter(options.ExportGraphFileName);
+                    if (options.ExportGraphFileType == GraphFileType.Dimacs)
+                    {
+                        exportFile = new DimacsFileExport(dataWriter);
+                    }
+                    else if (options.ExportGraphFileType == GraphFileType.Metis)
+                    {
+                        
+                    }
+                    else if (options.ExportGraphFileType == GraphFileType.D3Json)
+                    {
+                        exportFile = new D3JsonFileExport(dataWriter);
+                    }
 
+                    if (exportFile == null) throw new ApplicationException("The application does not support file export type.");
+
+                    exportFile.ExportGraph(graph);
+                };
+
+            Func<RandomGraphOptions, Dictionary<Vertex, List<Edge>>> randomGraphAct = (RandomGraphOptions options) =>
+                {
                     IRandomGraph randomGraph = null;
                     if (options.GraphAlgortiham == RandomGraphType.ErdosRenyiEdges)
                     {
@@ -32,20 +45,33 @@ namespace RandomGraph.Console
 
                     if (randomGraph == null) throw new ApplicationException("The application does not support random graph model.");
 
-                    IExportGraph exportFile = null;
-                    var dataWriter = new FileWriter(options.ExportFileName);
-                    if (options.ExportFileType == GraphFileType.Dimacs)
-                    {
-                        exportFile = new DimacsFileExport(dataWriter);
-                    }
-                    if (exportFile == null) throw new ApplicationException("The application does not support file export type.");
-
                     var graph = randomGraph.GenerateGraph();
-                    exportFile.ExportGraph(graph);
-                }
-                return 0;
-            },
-            errors => 1);
+                    return graph;
+                };
+
+            var result = Parser.Default.ParseArguments<RandomGraphOptions, ConvertGraphOptions>(args);
+            var exitCode = result
+                .MapResult(
+                (RandomGraphOptions options) =>
+                    {
+                        if (options.Verbose)
+                        {
+                            System.Console.WriteLine("Filenames: {0}", 1);
+                        }
+                        else
+                        {
+                            System.Console.WriteLine("Processing...");
+
+                            var graph = randomGraphAct(options);
+                            exportAct(graph, options);
+                        }
+                        return 0;
+                    },
+                    (ConvertGraphOptions options) =>
+                    {
+                        return 0;
+                    },
+                    errors => 1);
             return exitCode;
         }
     }

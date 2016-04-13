@@ -2,16 +2,14 @@
 
 namespace RandomGraph.Console.Options
 {
+    // convert input.txt -i 0 -o 0
     [Verb("convert", HelpText = "Convert file with the graph to another format.")]
-    class ConvertGraphOptions
+    class ConvertGraphOptions : OptionsBase
     {
-        [Value(0, MetaName = "input file", HelpText = "Input file with graph to be processed.", Required = true)]
-        string FileName { get; set; }
-
-        [Option('i', "input", HelpText = "Input file with graph to be converted.")]
+        [Option('p', HelpText = "Type of the graph for output file.", Required = true)]
         GraphFileType ImportGraphFileType { get; set; }
 
-        [Option('o', "output", HelpText = "Output file with converted graph.")]
-        GraphFileType ExportGraphFileType { get; set; }
+        [Option('i', HelpText = "Input file with graph to be processed.", Required = true)]
+        string InputGraphFileName { get; set; }
     }
 }

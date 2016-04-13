@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="GraphFileType.cs" />
     <Compile Include="Options\ConvertGraphOptions.cs" />
+    <Compile Include="Options\Options.cs" />
     <Compile Include="Options\RandomGraphOptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

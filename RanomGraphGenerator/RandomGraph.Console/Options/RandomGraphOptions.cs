@@ -4,9 +4,9 @@ using CommandLine.Text;
 
 namespace RandomGraph.Console.Options
 {
-    // 0 3 4 0 test.col
+    // rnd 0 3 4 0 test.col
     [Verb("rnd", HelpText = "Generate random graph generator.")]
-    class RandomGraphOptions
+    class RandomGraphOptions : OptionsBase
     {
         [Value(0, Required = true, MetaName = "g", HelpText = "Random graph algoritham type.")]
         public RandomGraphType GraphAlgortiham { get; set; }
@@ -17,17 +17,11 @@ namespace RandomGraph.Console.Options
         [Value(2, Required = true, MetaName = "e", HelpText = "Number of the expected edges in the graph.")]
         public int NumberOfEdges { get; set; }
 
-        [Value(3, Required = true, MetaName = "f", HelpText = "Type of the graph output file.")]
-        public GraphFileType ExportFileType { get; set; }
-
-        [Value(4, Required = true, MetaName = "o", HelpText = "Type of the graph output file.")]
-        public string ExportFileName { get; set; }
-
         // Omitting long name, default --verbose
         [Option(HelpText = "Prints all messages to standard output.")]
         public bool Verbose { get; set; }
 
-        [Usage(ApplicationAlias = "yourapp")]
+        [Usage(ApplicationAlias = "Random graph generator")]
         public static IEnumerable<Example> Examples
         {
             get
