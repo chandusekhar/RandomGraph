@@ -31,7 +31,7 @@ namespace RandomGraph.Console
                     exportFile.ExportGraph(graph);
                 };
 
-            Func<RandomGraphOptions, Dictionary<Vertex, List<Edge>>> randomGraphAct = (RandomGraphOptions options) =>
+            Func<RandomGraphOptions, Dictionary<Vertex, List<Edge>>> randomGraphFunc = (RandomGraphOptions options) =>
                 {
                     IRandomGraph randomGraph = null;
                     if (options.GraphAlgortiham == RandomGraphType.ErdosRenyiEdges)
@@ -49,6 +49,13 @@ namespace RandomGraph.Console
                     return graph;
                 };
 
+            Func<ConvertGraphOptions, Dictionary<Vertex, List<Edge>>> parseGraphFromFileFunc =
+                (ConvertGraphOptions options) =>
+                {
+
+                    return null;
+                };
+
             var result = Parser.Default.ParseArguments<RandomGraphOptions, ConvertGraphOptions>(args);
             var exitCode = result
                 .MapResult(
@@ -62,13 +69,16 @@ namespace RandomGraph.Console
                         {
                             System.Console.WriteLine("Processing...");
 
-                            var graph = randomGraphAct(options);
+                            var graph = randomGraphFunc(options);
                             exportAct(graph, options);
                         }
                         return 0;
                     },
                     (ConvertGraphOptions options) =>
                     {
+                        var graph = parseGraphFromFileFunc(options);
+                        exportAct(graph, options);
+
                         return 0;
                     },
                     errors => 1);
