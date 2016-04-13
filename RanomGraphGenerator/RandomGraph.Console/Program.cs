@@ -19,7 +19,7 @@ namespace RandomGraph.Console
                     }
                     else if (options.ExportGraphFileType == GraphFileType.Metis)
                     {
-                        
+                        exportFile = new MetisFileExport(dataWriter);
                     }
                     else if (options.ExportGraphFileType == GraphFileType.D3Json)
                     {
