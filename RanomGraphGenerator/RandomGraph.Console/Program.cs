@@ -1,5 +1,6 @@
 ﻿using System;
 using CommandLine;
+using RandomGraph.Console.Options;
 
 namespace RandomGraph.Console
 {
@@ -8,7 +9,7 @@ namespace RandomGraph.Console
         static int Main(string[] args)
         {
             // input: 0 3 4 0 test.col
-            var result = Parser.Default.ParseArguments<Options>(args);
+            var result = Parser.Default.ParseArguments<RandomGraphOptions>(args);
             var exitCode = result.MapResult(options =>
             {
                 if (options.Verbose)
@@ -33,7 +34,7 @@ namespace RandomGraph.Console
 
                     IExportGraph exportFile = null;
                     var dataWriter = new FileWriter(options.ExportFileName);
-                    if (options.ExportFileType == ExportFileType.Dimacs)
+                    if (options.ExportFileType == GraphFileType.Dimacs)
                     {
                         exportFile = new DimacsFileExport(dataWriter);
                     }

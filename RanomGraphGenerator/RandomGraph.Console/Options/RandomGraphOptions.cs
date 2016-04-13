@@ -1,17 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Text;
 using CommandLine;
 using CommandLine.Text;
 
-namespace RandomGraph.Console
+namespace RandomGraph.Console.Options
 {
     // 0 3 4 0 test.col
-    public class Options
+    [Verb("rnd", HelpText = "Generate random graph generator.")]
+    class RandomGraphOptions
     {
-        //[Option('r', "read", Required = true,
-        //  HelpText = "Input files to be processed.")]
-        //public IEnumerable<string> InputFiles { get; set; }
-
         [Value(0, Required = true, MetaName = "g", HelpText = "Random graph algoritham type.")]
         public RandomGraphType GraphAlgortiham { get; set; }
 
@@ -22,7 +18,7 @@ namespace RandomGraph.Console
         public int NumberOfEdges { get; set; }
 
         [Value(3, Required = true, MetaName = "f", HelpText = "Type of the graph output file.")]
-        public ExportFileType ExportFileType { get; set; }
+        public GraphFileType ExportFileType { get; set; }
 
         [Value(4, Required = true, MetaName = "o", HelpText = "Type of the graph output file.")]
         public string ExportFileName { get; set; }
@@ -36,7 +32,7 @@ namespace RandomGraph.Console
         {
             get
             {
-                yield return new Example("Normal scenario", new Options { GraphAlgortiham = RandomGraphType.ErdosRenyiEdges });
+                yield return new Example("Normal scenario", new RandomGraphOptions { GraphAlgortiham = RandomGraphType.ErdosRenyiEdges });
             }
         }
     }

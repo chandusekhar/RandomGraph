@@ -46,8 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExportFileType.cs" />
-    <Compile Include="Options.cs" />
+    <Compile Include="GraphFileType.cs" />
+    <Compile Include="Options\ConvertGraphOptions.cs" />
+    <Compile Include="Options\RandomGraphOptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomGraphType.cs" />
