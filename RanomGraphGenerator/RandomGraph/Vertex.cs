@@ -23,9 +23,8 @@
         /// </summary>
         /// <param name="id">The ID of the vertex.</param>
         /// <param name="weight">The weight of the vertex.</param>
-        public Vertex(int id, int weight)
+        public Vertex(int id, int weight) : this(id)
         {
-            ID = id;
             Weight = weight;
         }
 
@@ -34,7 +33,7 @@
         /// Weight will be set by default to <see cref="DefaultWeight">1</see>.
         /// </summary>
         /// <param name="id">The ID of the vertex.</param>
-        public Vertex(int id)
+        public Vertex(int id) : this()
         {
             ID = id;
             Weight = DefaultWeight;
