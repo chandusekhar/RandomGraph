@@ -54,6 +54,7 @@
     <Compile Include="IRandomGraph.cs" />
     <Compile Include="MetisFileExport.cs" />
     <Compile Include="ParseDimacsGraph.cs" />
+    <Compile Include="ParseGraphBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vertex.cs" />
   </ItemGroup>
