@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="D3JsonFileExportTest.cs" />
     <Compile Include="DimacsFileExportTest.cs" />
+    <Compile Include="DimacsGraphParserTest.cs" />
     <Compile Include="ErdosRenyiModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MetisFileExportTest.cs" />

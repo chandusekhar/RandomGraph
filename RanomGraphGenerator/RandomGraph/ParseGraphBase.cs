@@ -4,7 +4,7 @@ namespace RandomGraph
 {
     public abstract class ParseGraphBase
     {
-        public IDataLoader DataLoader { get; set; }
+        protected IDataLoader DataLoader { get; }
 
         protected ParseGraphBase(IDataLoader dataLoader)
         {

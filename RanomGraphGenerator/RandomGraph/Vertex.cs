@@ -1,6 +1,6 @@
 ﻿namespace RandomGraph
 {
-    public struct Vertex
+    public class Vertex
     {
         /// <summary>
         /// Default value of the edge weight if it's not set.
@@ -33,7 +33,7 @@
         /// Weight will be set by default to <see cref="DefaultWeight">1</see>.
         /// </summary>
         /// <param name="id">The ID of the vertex.</param>
-        public Vertex(int id) : this()
+        public Vertex(int id)
         {
             ID = id;
             Weight = DefaultWeight;

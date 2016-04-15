@@ -2,7 +2,7 @@
 
 namespace RandomGraph.Console.Options
 {
-    abstract class OptionsBase
+   abstract class OptionsBase
     {
         [Option('f', HelpText = "Type of the graph output file.", Required = true)]
         public GraphFileType ExportGraphFileType { get; set; }

@@ -6,10 +6,10 @@ namespace RandomGraph.Console.Options
     [Verb("convert", HelpText = "Convert file with the graph to another format.")]
     class ConvertGraphOptions : OptionsBase
     {
-        [Option('p', HelpText = "Type of the graph for output file.", Required = true)]
-        GraphFileType ImportGraphFileType { get; set; }
+        [Option('p', HelpText = "Type of the graph in input file - graph to be converted.", Required = true)]
+        public GraphFileType ImportGraphFileType { get; set; }
 
         [Option('i', HelpText = "Input file with graph to be processed.", Required = true)]
-        string InputGraphFileName { get; set; }
+        public string InputGraphFileName { get; set; }
     }
 }

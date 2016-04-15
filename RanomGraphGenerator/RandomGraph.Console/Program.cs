@@ -52,8 +52,18 @@ namespace RandomGraph.Console
             Func<ConvertGraphOptions, Dictionary<Vertex, List<Edge>>> parseGraphFromFileFunc =
                 (ConvertGraphOptions options) =>
                 {
+                    var fileLoader = new FileLoader(options.InputGraphFileName);
 
-                    return null;
+                    ParseGraphBase graphParser = null;
+                    if (options.ImportGraphFileType == GraphFileType.Dimacs)
+                    {
+                        graphParser = new ParseDimacsGraph(fileLoader);
+                    }
+
+                    if (graphParser == null) throw new ApplicationException("The application does not support input graph model.");
+
+                    var graph = graphParser.ParseGraph();
+                    return graph;
                 };
 
             var result = Parser.Default.ParseArguments<RandomGraphOptions, ConvertGraphOptions>(args);

@@ -27,21 +27,28 @@ namespace RandomGraph
                     var vertexID = int.Parse(fileData[1]) - 1;
                     var connectedVertexID = int.Parse(fileData[2]) - 1;
 
-                    Vertex? vertex = graph.Keys.FirstOrDefault(v => v.ID == vertexID);
+                    Vertex vertex = graph.Keys.FirstOrDefault(v => v.ID == vertexID);
                     if (vertex == null)
                     {
                         vertex = new Vertex(vertexID, VertexWeight);
-                        graph.Add(vertex.Value, new List<Edge>());
+                        graph.Add(vertex, new List<Edge>());
                     }
-                    else
+                    var edges = graph.Single(p => p.Key.ID == vertexID).Value;
+                    if (edges.All(e => e.VertexID != connectedVertexID))
                     {
-                        Vertex? connectedVertex = graph.Keys.FirstOrDefault(v => v.ID == connectedVertexID);
-                        if (!connectedVertex.HasValue)
-                        {
-                            connectedVertex = new Vertex(connectedVertexID, VertexWeight);
-                            graph.Add(connectedVertex.Value, new List<Edge>());
-                        }
-                        graph.Single(p => p.Key.ID == connectedVertexID).Value.Add(new Edge(vertexID, EdgeWeight));
+                        edges.Add(new Edge(connectedVertexID, EdgeWeight));
+                    }
+
+                    Vertex connectedVertex = graph.Keys.FirstOrDefault(v => v.ID == connectedVertexID);
+                    if (connectedVertex== null)
+                    {
+                        connectedVertex = new Vertex(connectedVertexID, VertexWeight);
+                        graph.Add(connectedVertex, new List<Edge>());
+                    }
+                    var connectedEdges = graph.Single(p => p.Key.ID == connectedVertexID).Value;
+                    if (connectedEdges.All(e => e.VertexID != vertexID))
+                    {
+                        connectedEdges.Add(new Edge(vertexID, EdgeWeight));
                     }
                 }
             }
