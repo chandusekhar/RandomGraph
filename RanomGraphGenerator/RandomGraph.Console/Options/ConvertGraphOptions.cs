@@ -2,7 +2,7 @@
 
 namespace RandomGraph.Console.Options
 {
-    // convert input.txt -i 0 -o 0
+    // convert -f 1 -o test.txt -p 0 -i Graphs\myciel3.col
     [Verb("convert", HelpText = "Convert file with the graph to another format.")]
     class ConvertGraphOptions : OptionsBase
     {
