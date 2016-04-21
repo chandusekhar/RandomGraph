@@ -17,9 +17,13 @@ namespace RandomGraph.Console
                     {
                         exportFile = new DimacsFileExport(dataWriter);
                     }
-                    else if (options.ExportGraphFileType == GraphFileType.Metis)
+                    else if (options.ExportGraphFileType == GraphFileType.FullWeightedMetis)
                     {
-                        exportFile = new MetisFileExport(dataWriter);
+                        exportFile = new FullWeightedMetisFileExport(dataWriter);
+                    }
+                    else if (options.ExportGraphFileType == GraphFileType.UnweightedMetis)
+                    {
+                        exportFile = new UnweightedMetisFileExport(dataWriter);
                     }
                     else if (options.ExportGraphFileType == GraphFileType.D3Json)
                     {

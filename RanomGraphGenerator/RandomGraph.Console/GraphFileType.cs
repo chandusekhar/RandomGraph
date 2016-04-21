@@ -3,7 +3,8 @@
     public enum GraphFileType : byte
     {
         Dimacs,
-        Metis,
+        FullWeightedMetis,
+        UnweightedMetis,
         D3Json
     }
 }

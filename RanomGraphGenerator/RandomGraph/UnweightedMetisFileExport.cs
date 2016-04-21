@@ -5,11 +5,11 @@ using System.Text;
 
 namespace RandomGraph
 {
-    public class MetisFileExport : IExportGraph
+    public class UnweightedMetisFileExport : IExportGraph
     {
         private readonly IDataWriter _dataWriter;
 
-        public MetisFileExport(IDataWriter dataWriter)
+        public UnweightedMetisFileExport(IDataWriter dataWriter)
         {
             _dataWriter = dataWriter;
         }
@@ -22,7 +22,7 @@ namespace RandomGraph
 
             foreach (var pair in graph)
             {
-                sb.Append($"{Environment.NewLine}{pair.Key.Weight} {string.Join(" ", pair.Value.Select(edge => $"{edge.VertexID} {edge.Weight}"))}");
+                sb.Append($"{Environment.NewLine}{string.Join(" ", pair.Value.Select(edge => (edge.VertexID + 1).ToString()))}");
             }
 
             _dataWriter.WriteData(sb.ToString());

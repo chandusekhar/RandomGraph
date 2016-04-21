@@ -31,7 +31,7 @@ namespace RandomGraph.Test
             var writerMock = new Mock<IDataWriter>();
             writerMock.Setup(metod => metod.WriteData(It.IsAny<string>()));
 
-            var metisFileExport = new MetisFileExport(writerMock.Object);
+            var metisFileExport = new FullWeightedMetisFileExport(writerMock.Object);
             var dummyGraph = GetDummyGraph();
             metisFileExport.ExportGraph(dummyGraph);
 
@@ -44,7 +44,7 @@ namespace RandomGraph.Test
             var writerMock = new Mock<IDataWriter>();
             writerMock.Setup(metod => metod.WriteData(It.IsAny<string>()));
 
-            var metisFileExport = new MetisFileExport(writerMock.Object);
+            var metisFileExport = new FullWeightedMetisFileExport(writerMock.Object);
             var dummyGraph = GetDummyGraph();
             metisFileExport.ExportGraph(dummyGraph);
 

@@ -45,6 +45,7 @@
     <Compile Include="Edge.cs" />
     <Compile Include="ErdosRenyiModel.cs" />
     <Compile Include="FileLoader.cs" />
+    <Compile Include="UnweightedMetisFileExport.cs" />
     <Compile Include="IDataLoader.cs" />
     <Compile Include="IExportGraph.cs" />
     <Compile Include="ExtensionMethods.cs" />
@@ -52,7 +53,7 @@
     <Compile Include="FullEdge.cs" />
     <Compile Include="IDataWriter.cs" />
     <Compile Include="IRandomGraph.cs" />
-    <Compile Include="MetisFileExport.cs" />
+    <Compile Include="FullWeightedMetisFileExport.cs" />
     <Compile Include="ParseDimacsGraph.cs" />
     <Compile Include="ParseGraphBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
