@@ -18,7 +18,7 @@ namespace RandomGraph
         {
             var sb = new StringBuilder(128);
 
-            sb.Append(graph.Keys.Count + " " + graph.Sum(v => v.Value.Count));
+            sb.Append(graph.Keys.Count + " " + graph.Sum(v => v.Value.Count / 2));
 
             foreach (var pair in graph)
             {
