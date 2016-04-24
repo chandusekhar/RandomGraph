@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using log4net;
 
 namespace RandomGraph
 {
     public class FullWeightedMetisFileExport : IExportGraph
     {
-        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         private readonly IDataWriter _dataWriter;
 
         public FullWeightedMetisFileExport(IDataWriter dataWriter)
