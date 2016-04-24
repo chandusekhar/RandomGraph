@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CommandLine;
+using log4net.Config;
 using RandomGraph.Console.Options;
 
 namespace RandomGraph.Console
@@ -9,6 +10,8 @@ namespace RandomGraph.Console
     {
         static int Main(string[] args)
         {
+            XmlConfigurator.Configure();
+
             Action<Dictionary<Vertex, List<Edge>>, OptionsBase> exportAct = (graph, options) =>
                 {
                     IExportGraph exportFile = null;

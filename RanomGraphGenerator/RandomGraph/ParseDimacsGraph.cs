@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using log4net;
 
 namespace RandomGraph
 {
@@ -8,6 +10,8 @@ namespace RandomGraph
     {
         const int VertexWeight = 1;
         const int EdgeWeight = 1;
+
+        public static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public ParseDimacsGraph(IDataLoader dataLoader) 
             : base(dataLoader)
@@ -32,11 +36,13 @@ namespace RandomGraph
                     {
                         vertex = new Vertex(vertexID, VertexWeight);
                         graph.Add(vertex, new List<Edge>());
+                        Log.Debug($"vertex: {vertexID}");
                     }
                     var edges = graph.Single(p => p.Key.ID == vertexID).Value;
                     if (edges.All(e => e.VertexID != connectedVertexID))
                     {
                         edges.Add(new Edge(connectedVertexID, EdgeWeight));
+                        Log.Debug($"edge: {vertexID} {connectedVertexID}");
                     }
 
                     Vertex connectedVertex = graph.Keys.FirstOrDefault(v => v.ID == connectedVertexID);
@@ -44,11 +50,13 @@ namespace RandomGraph
                     {
                         connectedVertex = new Vertex(connectedVertexID, VertexWeight);
                         graph.Add(connectedVertex, new List<Edge>());
+                        Log.Debug($"connectedVertexID: {connectedVertexID}");
                     }
                     var connectedEdges = graph.Single(p => p.Key.ID == connectedVertexID).Value;
                     if (connectedEdges.All(e => e.VertexID != vertexID))
                     {
                         connectedEdges.Add(new Edge(vertexID, EdgeWeight));
+                        Log.Debug($"connectedEdges: {connectedVertexID} {vertexID}");
                     }
                 }
             }
