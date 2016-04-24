@@ -61,6 +61,9 @@ namespace RandomGraph
                 }
             }
 
+            // Order graph by vertex IDs.
+            graph = graph.OrderBy(p => p.Key.ID).ToDictionary((keyItem) => keyItem.Key, (valueItem) => valueItem.Value);
+
             return graph;
         }
     }
