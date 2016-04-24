@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using log4net;
 
 namespace RandomGraph
 {
     public class FullWeightedMetisFileExport : IExportGraph
     {
+        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly IDataWriter _dataWriter;
 
         public FullWeightedMetisFileExport(IDataWriter dataWriter)
@@ -18,7 +22,8 @@ namespace RandomGraph
         {
             var sb = new StringBuilder(128);
 
-            sb.Append(graph.Keys.Count + " " + graph.Sum(v => v.Value.Count / 2) + " 011");
+            var countOfEdges = graph.Sum(v => v.Value.Count);
+            sb.Append(graph.Keys.Count + " " + countOfEdges + " 011");
 
             foreach (var pair in graph)
             {

@@ -11,7 +11,7 @@ namespace RandomGraph
         const int VertexWeight = 1;
         const int EdgeWeight = 1;
 
-        public static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public ParseDimacsGraph(IDataLoader dataLoader) 
             : base(dataLoader)
