@@ -19,14 +19,7 @@ namespace RandomGraph.Test
             return dummyGraph;
         }
 
-        private static readonly string Export3DJSONFile = "{'nodes':[{'name':'1','group':1},"
-                                                        + "{'name':'2','group':1},{'name':'3','group':1}],"
-                                                        + "'links':[{'source':0,'target':1,'value':1},"
-                                                        + "{'source':0,'target':2,'value':1},"
-                                                        + "{'source':1,'target':0,'value':1},"
-                                                        + "{'source':1,'target':2,'value':1},"
-                                                        + "{'source':2,'target':0,'value':1},"
-                                                        + "{'source':2,'target':1,'value':1}]}";
+        private static readonly string Export3DJSONFile = "{\"nodes\":[{\"name\":\"1\",\"group\":1},{\"name\":\"2\",\"group\":1},{\"name\":\"3\",\"group\":1}],\"links\":[{\"source\":0,\"target\":1,\"value\":1},{\"source\":0,\"target\":2,\"value\":1},{\"source\":1,\"target\":0,\"value\":1},{\"source\":1,\"target\":2,\"value\":1},{\"source\":2,\"target\":0,\"value\":1},{\"source\":2,\"target\":1,\"value\":1}]";
 
         [TestMethod]
         public void ExportDimacsGraph_WriteData_Called()

@@ -17,7 +17,7 @@ namespace RandomGraph
         {
             var sb = new StringBuilder(128);
             sb.Append("{\"nodes\":[");
-            var nodes = string.Join(",", graph.Keys.Select(vertex => "{\"name\":\"" + (vertex.ID + 1) + "\",'group\":1}"));
+            var nodes = string.Join(",", graph.Keys.Select(vertex => "{\"name\":\"" + (vertex.ID + 1) + "\",\"group\":1}"));
             sb.Append(nodes);
 
             sb.Append("],\"links\":[");
