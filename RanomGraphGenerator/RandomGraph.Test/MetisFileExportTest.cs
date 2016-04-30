@@ -20,7 +20,7 @@ namespace RandomGraph.Test
             return dummyGraph;
         }
 
-        private static readonly string ExportMetisFile = "3 6"
+        private static readonly string ExportMetisFile = "3 6 011"
                                                        + $"{Environment.NewLine}1 1 1 2 4"
                                                        + $"{Environment.NewLine}2 0 3 2 1"
                                                        + $"{Environment.NewLine}1 0 1 1 3";

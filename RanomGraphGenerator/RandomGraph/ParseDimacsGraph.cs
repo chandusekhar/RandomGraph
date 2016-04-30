@@ -13,7 +13,7 @@ namespace RandomGraph
 
         private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public ParseDimacsGraph(IDataLoader dataLoader) 
+        public ParseDimacsGraph(IDataLoader dataLoader)
             : base(dataLoader)
         {
         }
@@ -25,45 +25,25 @@ namespace RandomGraph
             foreach (var line in DataLoader.LoadData())
             {
                 var fileData = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (fileData[0] == "e")
+                if (fileData[0] == "p")
+                {
+                    var numberOfVertices = int.Parse(fileData[2]);
+                    for (var i = 0; i < numberOfVertices; i++)
+                    {
+                        graph.Add(new Vertex(i, VertexWeight), new List<Edge>());
+                    }
+                }
+                else if (fileData[0] == "e")
                 {
                     var vertexID = int.Parse(fileData[1]) - 1;
                     var connectedVertexID = int.Parse(fileData[2]) - 1;
 
-                    Vertex vertex = graph.Keys.FirstOrDefault(v => v.ID == vertexID);
-                    if (vertex == null)
-                    {
-                        vertex = new Vertex(vertexID, VertexWeight);
-                        graph.Add(vertex, new List<Edge>());
-                        Log.Debug($"vertex: {vertexID}");
-                    }
-                    var edges = graph.Single(p => p.Key.ID == vertexID).Value;
-                    if (edges.All(e => e.VertexID != connectedVertexID))
-                    {
-                        edges.Add(new Edge(connectedVertexID, EdgeWeight));
-                        Log.Debug($"edge: {vertexID} {connectedVertexID}");
-                    }
+                    graph.Single(v => v.Key.ID == vertexID).Value.Add(new Edge(connectedVertexID, EdgeWeight));
 
-                    Vertex connectedVertex = graph.Keys.FirstOrDefault(v => v.ID == connectedVertexID);
-                    if (connectedVertex== null)
-                    {
-                        connectedVertex = new Vertex(connectedVertexID, VertexWeight);
-                        graph.Add(connectedVertex, new List<Edge>());
-                        Log.Debug($"connectedVertexID: {connectedVertexID}");
-                    }
-                    var connectedEdges = graph.Single(p => p.Key.ID == connectedVertexID).Value;
-                    if (connectedEdges.All(e => e.VertexID != vertexID))
-                    {
-                        connectedEdges.Add(new Edge(vertexID, EdgeWeight));
-                        Log.Debug($"connectedEdges: {connectedVertexID} {vertexID}");
-                    }
+                    graph.Single(v => v.Key.ID == connectedVertexID).Value.Add(new Edge(vertexID, EdgeWeight));
                 }
             }
-
-            // Order graph by vertex IDs.
-            graph = graph.OrderBy(p => p.Key.ID).ToDictionary(keyItem => keyItem.Key, valueItem => valueItem.Value);
-
+            
             return graph;
         }
     }

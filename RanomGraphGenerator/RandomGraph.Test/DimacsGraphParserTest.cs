@@ -66,7 +66,7 @@ namespace RandomGraph.Test
 
             Assert.IsNotNull(graph);
             Assert.AreEqual(11, graph.Keys.Count);
-            Assert.AreEqual(40, graph.SelectMany(v => v.Value).Count());
+            Assert.AreEqual(80, graph.SelectMany(v => v.Value).Count());
         }
     }
 }
