@@ -1,4 +1,5 @@
 ﻿c http://mat.gsia.cmu.edu/COLOR/instances.html
+c convert -f 2 -o miles500.txt -p 0 -i Graphs\miles500.col
 c FILE: miles500.col
 c Translated from Stanford GraphBase File: miles500.gb
 c Stanford GraphBase ID: miles(128,0,0,0,500,127,0)

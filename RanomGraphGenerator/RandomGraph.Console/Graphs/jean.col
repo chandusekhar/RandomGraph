@@ -1,4 +1,5 @@
 ﻿c http://mat.gsia.cmu.edu/COLOR/instances.html
+c convert -f 2 -o jean.txt -p 0 -i Graphs\jean.col
 c FILE: jean.col
 c Translated from Stanford GraphBase File: jean.gb
 c Stanford GraphBase ID: book(?jean?,80,0,1,356,0,0,0)

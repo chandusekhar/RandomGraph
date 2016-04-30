@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using log4net;
 
 namespace RandomGraph
 {
@@ -11,10 +9,8 @@ namespace RandomGraph
         const int VertexWeight = 1;
         const int EdgeWeight = 1;
 
-        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         public ParseDimacsGraph(IDataLoader dataLoader)
-            : base(dataLoader)
+            : base(dataLoader) 
         {
         }
 

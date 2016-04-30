@@ -1,4 +1,5 @@
 ﻿c http://mat.gsia.cmu.edu/COLOR/instances.html
+c convert -f 2 -o myciel3.txt -p 0 -i Graphs\myciel3.col
 c FILE: myciel3.col
 c SOURCE: Michael Trick (trick@cmu.edu)
 c DESCRIPTION: Graph based on Mycielski transformation. 

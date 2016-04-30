@@ -1,4 +1,5 @@
-﻿c File:  mulsol.i.2.col
+﻿c convert -f 2 -o mulsol.i.2.txt -p 0 -i Graphs\mulsol.i.2.col
+c File:  mulsol.i.2.col
 c
 c SOURCE: Gary Lewandowski (gary@cs.wisc.edu)
 c

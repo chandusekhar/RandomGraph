@@ -60,22 +60,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Graphs\jean.col" />
-    <None Include="Graphs\le450_15b.col" />
-    <None Include="Graphs\miles500.col" />
-    <None Include="Graphs\mulsol.i.2.col" />
+    <None Include="Graphs\jean.col">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Graphs\le450_15b.col">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Graphs\miles500.col">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Graphs\mulsol.i.2.col">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Graphs\myciel3.col">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Graphs\myciel4.col">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Graphs\queen12_12.col" />
-    <None Include="Graphs\queen16_16.col" />
+    <None Include="Graphs\queen12_12.col">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Graphs\queen16_16.col">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Graphs\queen5_5.col">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Graphs\queen8_8.col" />
+    <None Include="Graphs\queen8_8.col">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -85,7 +99,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Graphs\metis_test.txt" />
+    <Content Include="Graphs\metis_test.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

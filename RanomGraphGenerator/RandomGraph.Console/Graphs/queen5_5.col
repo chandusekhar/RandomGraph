@@ -1,4 +1,5 @@
 ﻿c http://mat.gsia.cmu.edu/COLOR/instances.html
+c convert -f 2 -o queen5_5.txt -p 0 -i Graphs\queen5_5.col
 c FILE: queen5_5.col
 c Translated from Stanford GraphBase File: queen5_5.sgb
 c Stanford GraphBase ID: gunion(board(5,5,0,0,-1,0,0),board(5,5,0,0,-2,0,0),0,0)
