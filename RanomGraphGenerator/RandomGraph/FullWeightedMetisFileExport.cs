@@ -23,7 +23,7 @@ namespace RandomGraph
 
             foreach (var pair in graph)
             {
-                sb.Append($"{Environment.NewLine}{pair.Key.Weight} {string.Join(" ", pair.Value.Select(edge => $"{edge.VertexID} {edge.Weight}"))}");
+                sb.Append($"{Environment.NewLine}{pair.Key.Weight} {string.Join(" ", pair.Value.DistinctBy(edge => edge.VertexID).Select(edge => $"{edge.VertexID} {edge.Weight}"))}");
             }
 
             _dataWriter.WriteData(sb.ToString());

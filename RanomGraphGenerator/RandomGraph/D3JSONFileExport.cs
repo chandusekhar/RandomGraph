@@ -22,7 +22,7 @@ namespace RandomGraph
 
             sb.Append("],\"links\":[");
 
-            var edges = (from pair in graph from edge in pair.Value select "{\"source\":" + pair.Key.ID + ",\"target\":" + edge.VertexID + ",\"value\":1}").ToList();
+            var edges = (from pair in graph from edge in pair.Value.DistinctBy(edge => edge.VertexID) select "{\"source\":" + pair.Key.ID + ",\"target\":" + edge.VertexID + ",\"value\":1}").ToList();
 
             var links = string.Join(",", edges);
             sb.Append(links);
