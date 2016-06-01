@@ -34,9 +34,17 @@ namespace RandomGraph
                     var vertexID = int.Parse(fileData[1]) - 1;
                     var connectedVertexID = int.Parse(fileData[2]) - 1;
 
-                    graph.Single(v => v.Key.ID == vertexID).Value.Add(new Edge(connectedVertexID, EdgeWeight));
+                    var vertex = graph.Single(v => v.Key.ID == vertexID);
+                    if (vertex.Value.All(e => e.VertexID != connectedVertexID))
+                    {
+                        vertex.Value.Add(new Edge(connectedVertexID, EdgeWeight));
+                    }
 
-                    graph.Single(v => v.Key.ID == connectedVertexID).Value.Add(new Edge(vertexID, EdgeWeight));
+                    var conectedVertex = graph.Single(v => v.Key.ID == connectedVertexID);
+                    if (conectedVertex.Value.All(e => e.VertexID != vertexID))
+                    {
+                        conectedVertex.Value.Add(new Edge(vertexID, EdgeWeight));
+                    }
                 }
             }
             
