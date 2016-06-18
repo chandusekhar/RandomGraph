@@ -38,7 +38,7 @@ namespace RandomGraph.Console
                     exportFile.ExportGraph(graph);
                 };
 
-            Func<RandomGraphOptions, Dictionary<Vertex, List<Edge>>> randomGraphFunc = (RandomGraphOptions options) =>
+            Func<RandomGraphOptions, Dictionary<Vertex, List<Edge>>> randomGraphFunc = options =>
                 {
                     IRandomGraph randomGraph = null;
                     if (options.GraphAlgortiham == RandomGraphType.ErdosRenyiEdges)
@@ -57,7 +57,7 @@ namespace RandomGraph.Console
                 };
 
             Func<ConvertGraphOptions, Dictionary<Vertex, List<Edge>>> parseGraphFromFileFunc =
-                (ConvertGraphOptions options) =>
+                options =>
                 {
                     var fileLoader = new FileLoader(options.InputGraphFileName);
 
